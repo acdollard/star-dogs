@@ -1,4 +1,5 @@
-let express = reqire("express")
+let express = reqire("express");
+let session = require("express-session");
 
 // Requiring passport as we've configured it
 let passport = require("./app/config/passport");
@@ -23,7 +24,7 @@ app.use(passport.session());
 
 
 // Set Handlebars.
-var exphbs = require("express-handlebars");
+let exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
