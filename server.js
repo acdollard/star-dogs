@@ -1,6 +1,11 @@
 let express = reqire("express")
 
+// Requiring passport as we've configured it
+var passport = require("./app/config/passport");
+
+// Setting up port and requiring models for syncing
 let PORT = process.env.PORT || 8080;
+var db = require("./models");
 
 let app = express();
 
