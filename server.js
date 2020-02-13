@@ -1,11 +1,12 @@
-let express = reqire("express")
+let express = require("express");
+let session = require("express-session");
 
 // Requiring passport as we've configured it
 let passport = require("./app/config/passport");
 
 // Setting up port and requiring models for syncing
 let PORT = process.env.PORT || 8080;
-let db = require("./models");
+let db = require("./app/models");
 
 
 // Sets up the Express app to handle data parsing
@@ -29,7 +30,9 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Require routes folder
-require("./routes")(app);
+require(`./app/routes/api-routes`)(app);
+require(`./app/routes/html-routes`)(app);
+
 
 // Starts the server to begin listening
 db.sequelize.sync({ force: true }).then(function() {
