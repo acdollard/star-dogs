@@ -1,32 +1,44 @@
-// html-routes.js - this file offers a set of routes for sending users to the various html pages
+// html-routes.js - this file offers a set of routes for sending users to the constious html pages
 
 
 // Dependencies
 // =============================================================
-var path = require("path");
+
+const express = require('express');
+const path = require('path');
 
 // Routes
 // =============================================================
 module.exports = function(app) {
+  const app = express();
 
   // Each of the below routes just handles the HTML page that the user gets sent to.
 
-  // index route loads view.html
-  app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/stylesheets/landingPage.html"));
+  // Get route for homepage
+  app.get("/" , function(req,res){
+
+    res.sendFile(path.join(__dirname + '/landingPage.html'));
+
   });
 
-  app.get("/signup", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/signup.html"));
+  // Get route for login page
+  app.get("/login" , function(req,res){
+
+    res.sendFile(path.join(__dirname + '/login.html'));
+
   });
 
-  app.get("/cms", function(req, res) {
-    res.sendFile(path.join(__dirname, "../views/layouts/main.handlebars"));
+  // Get route for members and their dogs
+  app.get("/members" , function(req,res){
+
+    res.sendFile(path.join(__dirname + '/members.html'));
+
   });
 
-  // blog route loads blog.html
-  app.get("/blog", function(req, res) {
-    res.sendFile(path.join(__dirname, "../views/blog.html"));
-  });
+  // Get route for signup page
+  app.get("/signup" , function(req,res){
 
-};
+    res.sendFile(path.join(__dirname + '/signup.html'));
+
+  });
+}
