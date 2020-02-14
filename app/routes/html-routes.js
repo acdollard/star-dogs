@@ -31,7 +31,7 @@ module.exports = function(app) {
   // Get route for members and their dogs
   app.get("/members" , function(req,res){
 
-    res.sendFile(path.join(__dirname + '/members.html'));
+    res.sendFile(path.join(__dirname + '/../public' + '/stylesheets' + '/members.html'));
 
   });
 
