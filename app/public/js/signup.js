@@ -31,7 +31,7 @@ $(document).ready(function() {
         password: password
       })
         .then(function() {
-          console.log("HI")
+          console.log("HI");
           window.location.replace("/members");
           // If there's an error, log the error
         })

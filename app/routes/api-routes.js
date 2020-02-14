@@ -66,7 +66,7 @@ module.exports = function(app) {
 
   // DELETE route for deleting dogs
   app.delete("/api/dogs/:id", function(req, res) {
-    db.User.destroy({
+    db.Dog.destroy({
       where: {
         id: req.params.id
       }
@@ -78,7 +78,7 @@ module.exports = function(app) {
 
   // PUT route for updating dogs
   app.put("/api/dogs", function(req, res) {
-    db.User.create(req.body,
+    db.User.update(req.body,
       {
         where: {
           id: req.body.id
@@ -90,7 +90,7 @@ module.exports = function(app) {
   });
 
 
-  // POST route for logging user in
+  // POST route for signing user up
   app.post("/api/signup", function(req, res) {
     db.User.create({
       email: req.body.email,
@@ -104,7 +104,7 @@ module.exports = function(app) {
       });;
   })
 
-// POST route for creating user
+// POST route for logging user in
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
     res.json(req.user);
   });
