@@ -15,7 +15,7 @@ module.exports = function(app) {
 
   // GET route for getting all of the dogs
   app.get("/api/dogs/", function(req, res) {
-    db.Post.findAll({
+    db.Dog.findAll({
       where: {
         owner: req.params.owner
       }
@@ -27,7 +27,7 @@ module.exports = function(app) {
 
   // Get route for returning dogs of a specific category
   app.get("/api/dogs/starSign/:sign", function(req, res) {
-    db.Post.findAll({
+    db.Dog.findAll({
       where: {
         starSign: req.params.starSign,
         owner: req.params.owner
@@ -40,7 +40,7 @@ module.exports = function(app) {
 
   // Get route for retrieving a single dog
   app.get("/api/dogs/:id", function(req, res) {
-    db.Post.findOne({
+    db.Dog.findOne({
       where: {
         id: req.params.id
       }
@@ -53,7 +53,7 @@ module.exports = function(app) {
   // POST route for saving a new dog
   app.post("/api/dogs", function(req, res) {
     console.log(req.body);
-    db.Post.create({
+    db.Dog.create({
       name: req.body.name,
       birthDate: req.body.birthDate,
       breed: req.body.breed,
@@ -66,7 +66,7 @@ module.exports = function(app) {
 
   // DELETE route for deleting dogs
   app.delete("/api/dogs/:id", function(req, res) {
-    db.Post.destroy({
+    db.Dog.destroy({
       where: {
         id: req.params.id
       }
@@ -78,7 +78,7 @@ module.exports = function(app) {
 
   // PUT route for updating dogs
   app.put("/api/dogs", function(req, res) {
-    db.User.create(req.body,
+    db.User.update(req.body,
       {
         where: {
           id: req.body.id
@@ -90,9 +90,9 @@ module.exports = function(app) {
   });
 
 
-  // POST route for logging user in
+  // POST route for signing user up
   app.post("/api/signup", function(req, res) {
-    db.Post.create({
+    db.User.create({
       email: req.body.email,
       password: req.body.password
     })
@@ -104,7 +104,7 @@ module.exports = function(app) {
       });;
   })
 
-// POST route for creating user
+// POST route for logging user in
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
     res.json(req.user);
   });
