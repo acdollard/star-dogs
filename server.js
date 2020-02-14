@@ -1,16 +1,21 @@
-let express = require("express");
-let session = require("express-session");
+
+const express = require("express");
+const session = require("express-session");
+
+
 
 // Requiring passport as we've configured it
-let passport = require("./app/config/passport");
+const passport = require("./app/config/passport");
 
 // Setting up port and requiring models for syncing
-let PORT = process.env.PORT || 8080;
-let db = require("./app/models");
+
+const PORT = process.env.PORT || 8080;
+const db = require("./app/models");
+
 
 
 // Sets up the Express app to handle data parsing
-let app = express();
+const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Serve static content for the app from the "public" directory in the application directory.
@@ -24,7 +29,7 @@ app.use(passport.session());
 
 
 // Set Handlebars.
-var exphbs = require("express-handlebars");
+const exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
