@@ -5,7 +5,9 @@
 // =============================================================
 
 // Requiring our models
-var db = require("../models");
+const db = require("../models");
+const passport = require("../config/passport")
+
 
 // Routes
 // =============================================================
@@ -76,7 +78,7 @@ module.exports = function(app) {
 
   // PUT route for updating dogs
   app.put("/api/dogs", function(req, res) {
-    db.Post.update(req.body,
+    db.User.create(req.body,
       {
         where: {
           id: req.body.id
@@ -86,4 +88,26 @@ module.exports = function(app) {
         res.json(dbPost);
       });
   });
+
+
+  // POST route for logging user in
+  app.post("/api/signup", function(req, res) {
+    db.Post.create({
+      email: req.body.email,
+      password: req.body.password
+    })
+      .then(function() {
+        res.redirect(307, "/../public/stylesheets/members");
+      })
+      .catch(function(err) {
+        res.status(401).json(err);
+      });;
+  })
+
+// POST route for creating user
+  app.post("/api/login", passport.authenticate("local"), function(req, res) {
+    res.json(req.user);
+  });
 };
+
+

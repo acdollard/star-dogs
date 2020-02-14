@@ -10,21 +10,21 @@ const path = require('path');
 // Routes
 // =============================================================
 module.exports = function(app) {
-  const app = express();
+
 
   // Each of the below routes just handles the HTML page that the user gets sent to.
 
   // Get route for homepage
   app.get("/" , function(req,res){
 
-    res.sendFile(path.join(__dirname + '/landingPage.html'));
+    res.sendFile(path.join(__dirname + '/../public' + '/stylesheets' + '/landingPage.html'));
 
   });
 
   // Get route for login page
   app.get("/login" , function(req,res){
 
-    res.sendFile(path.join(__dirname + '/login.html'));
+    res.sendFile(path.join(__dirname + '/../public' + '/stylesheets' + '/login.html'));
 
   });
 
@@ -38,7 +38,7 @@ module.exports = function(app) {
   // Get route for signup page
   app.get("/signup" , function(req,res){
 
-    res.sendFile(path.join(__dirname + '/signup.html'));
+    res.sendFile(path.join(__dirname + '/../public/stylesheets/signup.html'));
 
   });
 }
