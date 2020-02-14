@@ -18,10 +18,6 @@ module.exports = function(sequelize, DataTypes){
             type: DataTypes.STRING,
             allowNull: false,
         },
-        breed: {
-            type: DataTypes.STRING, 
-            allowNull: false, 
-        },
         sign: {
             type: DataTypes.STRING,
             allowNull: false,

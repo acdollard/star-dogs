@@ -13,7 +13,11 @@ module.exports = function(app) {
 
   // index route loads view.html
   app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../views/index.handlebars"));
+    res.sendFile(path.join(__dirname, "../public/stylesheets/landingPage.html"));
+  });
+
+  app.get("/signup", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
 
   app.get("/cms", function(req, res) {
