@@ -50,7 +50,7 @@ module.exports = function(app) {
       });
   });
 
-  // POST route for saving a new dog
+  // POST route for creating and saving a new dog
   app.post("/api/dogs", function(req, res) {
     console.log(req.body);
     db.Dog.create({
@@ -95,5 +95,17 @@ module.exports = function(app) {
     db.User.create({
       email: req.body.email,
       password: req.body.password
-    });
-      })};
+    })
+      
+
+// POST route for logging user in
+  app.post("/api/login", passport.authenticate("local"), function(req, res) {
+    res.json(req.user);
+  });
+
+
+
+
+});
+
+}
