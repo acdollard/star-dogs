@@ -6,7 +6,7 @@ $(document).ready(function() {
   
     // When the form is submitted, we validate there's an email and password entered
     loginForm.on("click", function(event) {
-      alert("Anything??");
+
       event.preventDefault();
       let userData = {
         email: emailInput.val().trim(),
@@ -32,7 +32,7 @@ $(document).ready(function() {
         password: password
       })
         .then(function() {
-          console.log("HI")
+          console.log("HI");
           window.location.replace("/members");
           // If there's an error, log the error
         })
