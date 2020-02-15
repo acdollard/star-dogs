@@ -153,13 +153,13 @@ module.exports = function(app) {
   async function sortSign(birthday) {
     dayjs.extend(customParseFormat);
     let parseBirthday =  dayjs(birthday, "YYYY-MM-DD");
-         console.log(parseBirthday);
+         console.log(parseBirthday.$d);
          
-    if( dayjs().month(1).isBefore(dayjs(), parseBirthday) && dayjs().date(18).isAfter(dayjs(), parseBirthday) &&  ){
-      console.log("Starsign: " + starSign);
+    if(     parseBirthday.$d   > 02-02  ){
       starSign = "Aquarius";
+      console.log("Starsign: " + starSign);
+      return starSign;
     };
-    return starSign;
   
 
 
