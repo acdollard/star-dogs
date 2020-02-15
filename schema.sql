@@ -1,3 +1,3 @@
--- CREATE DATABASE star_dogs;
+CREATE DATABASE star_dogs;
 
 USE star_dogs;
