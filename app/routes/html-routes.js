@@ -6,7 +6,6 @@
 
 const express = require('express');
 const path = require('path');
-const passport = require("../config/passport")
 
 // Routes
 // =============================================================
@@ -32,7 +31,7 @@ module.exports = function(app) {
   // Get route for members and their dogs
   app.get("/members" , function(req,res){
 
-    res.sendFile(path.join(__dirname + '/../public' + '/stylesheets' + '/members.html'));
+    res.sendFile(path.join(__dirname + '/../public/stylesheets/members.html'));
 
   });
 
@@ -41,14 +40,5 @@ module.exports = function(app) {
 
     res.sendFile(path.join(__dirname + '/../public/stylesheets/signup.html'));
 
-  });
-
-    // Route for logging user out
-  app.get("/logout", function(req, res) {
-    console.log("HELLO:?");
-      req.logout();
-      console.log("Lg out plz");
-      // res.sendFile(path.join(__dirname + '/../public/stylesheets/landingPage.html'));
-      res.redirect("/");
   });
 }
