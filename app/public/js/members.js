@@ -1,5 +1,7 @@
 const newDogBtn = $("#newDogBtn");
 const logOutBtn=$("#logOutBtn");
+const modalAction = $("#modalAction");
+const modalClose = $("#modalClose");
 
 $(document).ready(function() {
 
@@ -7,9 +9,15 @@ logOutBtn.on("click", function(event){
     event.preventDefault(); 
     console.log("Flight of the conchords!");
     $.get("/logout", function(req, res){
-        console.log(res);
+        // console.log(res);
+        res.redirect("/");
     })
 });
+
+modalAction.on("click", function(Event) {
+    event.preventDefault();
+    console.log("Bam!");
+})
 
 
 
