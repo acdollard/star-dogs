@@ -2,6 +2,10 @@ const newDogBtn = $("#newDogBtn");
 const logOutBtn=$("#logOutBtn");
 const modalAction = $("#modalAction");
 const modalClose = $("#modalClose");
+const modalName = $("#modalName")
+const modalBreed = $("#modalBreed")
+const modalBday = $("#modalBday")
+
 
 $(document).ready(function() {
 
@@ -14,10 +18,62 @@ logOutBtn.on("click", function(event){
     })
 });
 
-modalAction.on("click", function(Event) {
+
+
+    // This file just does a GET request to figure out which user is logged in
+    // and updates the HTML on the page
+//     async function getID() {$.get("/api/user_data").then(function(data) {
+// console.log(data.id)
+//     });
+// }
+$.get("/api/user_data").then(function(data) {
+    console.log(data.id)
+        });
+
+
+//click listener for creating a new dog
+modalAction.on("click", function(event) {
     event.preventDefault();
     console.log("Bam!");
+
+    let newDog = {
+        name: modalName.val().trim(),
+        breed: modalBreed.val().trim(),
+        bDay: modalBday.val()
+    };
+
+    $.get("/api/user_data").then(function(data) {
+        console.log(data.id)
+            });
+    
+    
+    $.post("/api/dogs", {
+        name: newDog.name,
+        breed: newDog.breed,
+        bDay: newDog.bDay,
+        // UserID: data.id
+    }).then(function() {
+        console.log("New Dog Created!");
+        window.location.replace("/members");
+        // If there's an error, log the error
+    })
+    .catch(function(err) {
+        console.log(err);
+    });
 })
+});
+
+
+
+// function sortSign(birthday) {
+//    let parseBirthday = dayjs.extend(customParseFormat)
+//         dayjs(birthday, "YYYY-MM-DD")
+//          console.log(parseBirthday);
+//         return parseBirthday;
+   
+// };
+
+
 
 
 
@@ -63,4 +119,3 @@ var openmodal = document.querySelectorAll('.modal-open')
       body.classList.toggle('modal-active')
     }
 
-})
