@@ -153,72 +153,61 @@ module.exports = function(app) {
   async function sortSign(birthday) {
     dayjs.extend(customParseFormat);
     let parseBirthday =  dayjs(birthday, "YYYY-MM-DD");
-         console.log(parseBirthday.$d);
+         console.log(parseBirthday);
+         console.log(birthday);
+
          
-    if(     parseBirthday.$d   > 02-02  ){
+    if((parseBirthday.$M === 0 && parseBirthday.$D >= 20) || (parseBirthday.$M === 1 && parseBirthday.$D <= 18)){
       starSign = "Aquarius";
       console.log("Starsign: " + starSign);
       return starSign;
-    };
+    } else if ((parseBirthday.$M === 1 && parseBirthday.$D >= 19) || (parseBirthday.$M === 2 && parseBirthday.$D <= 20)){
+      starSign = "Pices";
+      console.log("Starsign: " + starSign);
+      return starSign;
+    } else if ((parseBirthday.$M === 2 && parseBirthday.$D >= 21) || (parseBirthday.$M === 3 && parseBirthday.$D <= 19)){
+      starSign = "Aries";
+      console.log("Starsign: " + starSign);
+      return starSign;
+    } else if ((parseBirthday.$M === 3 && parseBirthday.$D >= 19) || (parseBirthday.$M === 4 && parseBirthday.$D <= 20)){
+      starSign = "Taurus";
+      console.log("Starsign: " + starSign);
+      return starSign;
+    } else if ((parseBirthday.$M === 4 && parseBirthday.$D >= 19) || (parseBirthday.$M === 5 && parseBirthday.$D <= 20)){
+      starSign = "Gemeni";
+      console.log("Starsign: " + starSign);
+      return starSign;
+    } else if ((parseBirthday.$M === 5 && parseBirthday.$D >= 21) || (parseBirthday.$M === 6 && parseBirthday.$D <= 22)){
+      starSign = "Cancer";
+      console.log("Starsign: " + starSign);
+      return starSign;
+    } else if ((parseBirthday.$M === 6 && parseBirthday.$D >= 23) || (parseBirthday.$M === 7 && parseBirthday.$D <= 22)){
+      starSign = "Leo";
+      console.log("Starsign: " + starSign);
+      return starSign;
+    } else if ((parseBirthday.$M === 7 && parseBirthday.$D >= 23) || (parseBirthday.$M === 8 && parseBirthday.$D <= 22)){
+      starSign = "Virgo";
+      console.log("Starsign: " + starSign);
+      return starSign;
+    } else if ((parseBirthday.$M === 8 && parseBirthday.$D >= 23) || (parseBirthday.$M === 9 && parseBirthday.$D <= 22)){
+      starSign = "Libra";
+      console.log("Starsign: " + starSign);
+      return starSign;
+    } else if ((parseBirthday.$M === 9 && parseBirthday.$D >= 23) || (parseBirthday.$M === 10 && parseBirthday.$D <= 21)){
+      starSign = "Scorpio";
+      console.log("Starsign: " + starSign);
+      return starSign;
+    } else if ((parseBirthday.$M === 10 && parseBirthday.$D >= 22) || (parseBirthday.$M === 11 && parseBirthday.$D <= 21)){
+      starSign = "Sagittarius";
+      console.log("Starsign: " + starSign);
+      return starSign;
+    } else if ((parseBirthday.$M === 11 && parseBirthday.$D >= 22) || (parseBirthday.$M === 11 && parseBirthday.$D <= 19)){
+      starSign = "Sagittarius";
+      console.log("Starsign: " + starSign);
+      return starSign;
+    }
+     else console.log("Not yet!")
   
-
-
-
-        //  let starSign = "";
-        //  if(  dayjs().month(1).date(20).isBefore(dayjs(), parseBirthday) && dayjs().month(2).date(18).isAfter(dayjs(), parseBirthday)  )
-        //  {
-        //    starSign = "Aquarius"
-        //    console.log(starSign);
-        //   } else {
-        //     starSign = "Hey!"
-        //   }
-        //   return starSign
-        // else if (  dayjs().month(2).date(19).isBefore(dayjs(), parseBirthday) && dayjs().month(3).date(20).isAfter(dayjs(), parseBirthday)  )
-      //   {
-      //     starSign = "Pices"
-      //     console.log(starSign);
-      //   } else if (  dayjs().month(3).date(21).isBefore(dayjs(), parseBirthday) && dayjs().month(4).date(19).isAfter(dayjs(), parseBirthday)  )
-      //   {
-      //     starSign = "Aries"
-      //     console.log(starSign);
-      //   } else if (  dayjs().month(4).date(20).isBefore(dayjs(), parseBirthday) && dayjs().month(5).date(20).isAfter(dayjs(), parseBirthday)  )
-      //   {
-      //     starSign = "Taurus"
-      //     console.log(starSign);
-      //   } else if (  dayjs().month(5).date(21).isBefore(dayjs(), parseBirthday) && dayjs().month(6).date(20).isAfter(dayjs(), parseBirthday)  )
-      //   {
-      //     starSign = "Gemeni"
-      //     console.log(starSign);
-      //   } else if (  dayjs().month(6).date(21).isBefore(dayjs(), parseBirthday) && dayjs().month(7).date(22).isAfter(dayjs(), parseBirthday)  )
-      //   {
-      //     starSign = "Cancer"
-      //     console.log(starSign);
-      //   } else if (  dayjs().month(7).date(23).isBefore(dayjs(), parseBirthday) && dayjs().month(8).date(22).isAfter(dayjs(), parseBirthday)  )
-      //   {
-      //     starSign = "Leo"
-      //     console.log(starSign);
-      //   } else if (  dayjs().month(8).date(23).isBefore(dayjs(), parseBirthday) && dayjs().month(9).date(22).isAfter(dayjs(), parseBirthday)  )
-      //   {
-      //     starSign = "Virgo"
-      //     console.log(starSign);
-      //   } else if (  dayjs().month(9).date(23).isBefore(dayjs(), parseBirthday) && dayjs().month(10).date(22).isAfter(dayjs(), parseBirthday)  )
-      //   {
-      //     starSign = "Libra"
-      //     console.log(starSign);
-      //   } else if (  dayjs().month(10).date(23).isBefore(dayjs(), parseBirthday) && dayjs().month(11).date(21).isAfter(dayjs(), parseBirthday)  )
-      //   {
-      //     starSign = "Scorpio"
-      //     console.log(starSign);
-      //   } else if (  dayjs().month(11).date(22).isBefore(dayjs(), parseBirthday) && dayjs().month(12).date(21).isAfter(dayjs(), parseBirthday)  )
-      //   {
-      //     starSign = "Sagittarius"
-      //     console.log(starSign);
-      //   } else if (  dayjs().month(12).date(22).isBefore(dayjs(), parseBirthday) && dayjs().month(1).date(19).isAfter(dayjs(), parseBirthday)  )
-      //   {
-      //     starSign = "Capricorn"
-      //     console.log(starSign);
-      //   };
-      //   console.log(starSign);
  };
 
 
