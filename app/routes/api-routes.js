@@ -135,13 +135,7 @@ module.exports = function(app) {
       email: req.body.email,
       password: req.body.password
     })
-      .then(function() {
-        res.redirect(307, "/../public/stylesheets/members");
-      })
-      .catch(function(err) {
-        res.status(401).json(err);
-      });;
-  })
+      
 
 // POST route for logging user in
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
@@ -213,4 +207,4 @@ module.exports = function(app) {
 
 };
 
-
+}
