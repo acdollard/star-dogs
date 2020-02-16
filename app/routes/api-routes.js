@@ -85,9 +85,6 @@ module.exports = function(app) {
   app.post("/api/dogs", async function(req, res) {
     console.log(req.body);
     
-    // await sortSign(req.body.bDay),
-
-
       db.Dog.create({
         name: req.body.name,
         birthday: req.body.bDay,
@@ -134,7 +131,8 @@ module.exports = function(app) {
     db.User.create({
       email: req.body.email,
       password: req.body.password
-    })
+    });
+  });
       
 
 // POST route for logging user in
@@ -200,11 +198,10 @@ module.exports = function(app) {
       console.log("Starsign: " + starSign);
       return starSign;
     }
-     else console.log("Not yet!")
+     else console.log("Error with Sign!");
   
  };
-
-
 };
 
-}
+
+

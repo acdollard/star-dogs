@@ -22,10 +22,13 @@ logOutBtn.on("click", function(event){
 
     // This file just does a GET request to figure out which user is logged in
     // and updates the HTML on the page
-    $.get("/api/user_data").then(function(data) {
-console.log(data.id)
-    });
-
+//     async function getID() {$.get("/api/user_data").then(function(data) {
+// console.log(data.id)
+//     });
+// }
+$.get("/api/user_data").then(function(data) {
+    console.log(data.id)
+        });
 
 
 //click listener for creating a new dog
@@ -39,15 +42,16 @@ modalAction.on("click", function(event) {
         bDay: modalBday.val()
     };
 
- $.get("/api/user_data").then(function(data) {
-    console.log(data.id)
+    $.get("/api/user_data").then(function(data) {
+        console.log(data.id)
+            });
     
     
     $.post("/api/dogs", {
         name: newDog.name,
         breed: newDog.breed,
         bDay: newDog.bDay,
-        UserID: data.id
+        // UserID: data.id
     }).then(function() {
         console.log("New Dog Created!");
         window.location.replace("/members");
@@ -115,4 +119,3 @@ var openmodal = document.querySelectorAll('.modal-open')
       body.classList.toggle('modal-active')
     }
 
-})
