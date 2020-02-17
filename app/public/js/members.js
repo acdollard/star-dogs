@@ -9,6 +9,7 @@ const modalBday = $("#modalBday")
 
 $(document).ready(function() {
 
+    
 logOutBtn.on("click", function(event){
     event.preventDefault(); 
 
@@ -16,12 +17,13 @@ logOutBtn.on("click", function(event){
         // console.log(res);
         console.log("Logging out!")
     })
-    // .then(function() {
-    //     window.location.replace("/landingPage")
-    // })
-    // .catch(function(err) {
-    //     console.log(err);
-    //     })
+    .then(function() {
+        console.log("members.js window.location.replace test")
+        window.location.replace("/");
+    })
+    .catch(function(err) {
+        console.log(err);
+        })
 });
 
 

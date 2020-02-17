@@ -48,9 +48,9 @@ module.exports = function(app) {
   app.get("/logout", function(req, res) {
     console.log("HELLO:?");
     req.logout();
-    // res.redirect("/");
+    res.redirect("/");
       console.log("Lg out plz");
-      res.sendFile(path.join(__dirname + '/../public/landingPage.html'));
+      // res.sendFile(path.join(__dirname + '/../public/landingPage.html'));
       // res.sendFile(path.join(__dirname + '/../public' + '/stylesheets' + '/landingPage.html'));
 
   });
