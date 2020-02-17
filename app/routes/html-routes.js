@@ -48,7 +48,7 @@ module.exports = function(app) {
     console.log("HELLO:?");
       req.logout();
       console.log("Lg out plz");
-      res.sendFile(path.join(__dirname + '/../public/stylesheets/landingPage.html'));
+      // res.sendFile(path.join(__dirname + '/../public/stylesheets/landingPage.html'));
       // res.redirect("/");
   });
 }

@@ -14,7 +14,7 @@ logOutBtn.on("click", function(event){
     console.log("Flight of the conchords!");
     $.get("/logout", function(req, res){
         // console.log(res);
-        res.redirect("/");
+        window.location.replace("/landingPage");
     })
 });
 
