@@ -9,10 +9,22 @@ const modalBday = $("#modalBday")
 
 $(document).ready(function() {
 
+getDogs();
+
+function getDogs() {
+    $.get("/api/dogs", function(res){
+
+        console.log(res);
+
+    })
+}
+
+
+
+
     
 logOutBtn.on("click", function(event){
     event.preventDefault(); 
-
     $.get("/logout", function(req, res){
         // console.log(res);
         console.log("Logging out!")

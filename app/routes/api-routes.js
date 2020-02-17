@@ -15,15 +15,25 @@ var customParseFormat = require('dayjs/plugin/customParseFormat');
 // =============================================================
 module.exports = function(app) {
 
+// console.log(user.id);
+
   // GET route for getting all of the dogs
-  app.get("/api/dogs/", function(req, res) {
+  app.get("/api/dogs", function(req, res) {
+    console.log(req.user.id);
     db.Dog.findAll({
       where: {
-        owner: req.params.owner
+        UserId: req.user.id
       }
     })
-      .then(function(dbPost) {
-        res.json(dbPost);
+      .then(function(results) {
+        let usersDogs = [];
+
+
+        res.json(results);
+
+
+
+        console.log(results);
       });
   });
 
@@ -66,7 +76,7 @@ module.exports = function(app) {
     } else {
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
-      console.log(res);
+      // console.log(res);
       res.json({
         email: req.user.email,
         id: req.user.id
@@ -154,51 +164,51 @@ module.exports = function(app) {
     if((parseBirthday.$M === 0 && parseBirthday.$D >= 20) || (parseBirthday.$M === 1 && parseBirthday.$D <= 18)){
       starSign = "Aquarius";
       console.log("Starsign: " + starSign);
-      return starSign;
+        return starSign;
     } else if ((parseBirthday.$M === 1 && parseBirthday.$D >= 19) || (parseBirthday.$M === 2 && parseBirthday.$D <= 20)){
       starSign = "Pices";
       console.log("Starsign: " + starSign);
-      return starSign;
+        return starSign;
     } else if ((parseBirthday.$M === 2 && parseBirthday.$D >= 21) || (parseBirthday.$M === 3 && parseBirthday.$D <= 19)){
       starSign = "Aries";
       console.log("Starsign: " + starSign);
-      return starSign;
+        return starSign;
     } else if ((parseBirthday.$M === 3 && parseBirthday.$D >= 19) || (parseBirthday.$M === 4 && parseBirthday.$D <= 20)){
       starSign = "Taurus";
       console.log("Starsign: " + starSign);
-      return starSign;
+        return starSign;
     } else if ((parseBirthday.$M === 4 && parseBirthday.$D >= 19) || (parseBirthday.$M === 5 && parseBirthday.$D <= 20)){
       starSign = "Gemeni";
       console.log("Starsign: " + starSign);
-      return starSign;
+        return starSign;
     } else if ((parseBirthday.$M === 5 && parseBirthday.$D >= 21) || (parseBirthday.$M === 6 && parseBirthday.$D <= 22)){
       starSign = "Cancer";
       console.log("Starsign: " + starSign);
-      return starSign;
+        return starSign;
     } else if ((parseBirthday.$M === 6 && parseBirthday.$D >= 23) || (parseBirthday.$M === 7 && parseBirthday.$D <= 22)){
       starSign = "Leo";
       console.log("Starsign: " + starSign);
-      return starSign;
+        return starSign;
     } else if ((parseBirthday.$M === 7 && parseBirthday.$D >= 23) || (parseBirthday.$M === 8 && parseBirthday.$D <= 22)){
       starSign = "Virgo";
       console.log("Starsign: " + starSign);
-      return starSign;
+        return starSign;
     } else if ((parseBirthday.$M === 8 && parseBirthday.$D >= 23) || (parseBirthday.$M === 9 && parseBirthday.$D <= 22)){
       starSign = "Libra";
       console.log("Starsign: " + starSign);
-      return starSign;
+        return starSign;
     } else if ((parseBirthday.$M === 9 && parseBirthday.$D >= 23) || (parseBirthday.$M === 10 && parseBirthday.$D <= 21)){
       starSign = "Scorpio";
       console.log("Starsign: " + starSign);
-      return starSign;
+        return starSign;
     } else if ((parseBirthday.$M === 10 && parseBirthday.$D >= 22) || (parseBirthday.$M === 11 && parseBirthday.$D <= 21)){
       starSign = "Sagittarius";
       console.log("Starsign: " + starSign);
-      return starSign;
+        return starSign;
     } else if ((parseBirthday.$M === 11 && parseBirthday.$D >= 22) || (parseBirthday.$M === 11 && parseBirthday.$D <= 19)){
       starSign = "Sagittarius";
       console.log("Starsign: " + starSign);
-      return starSign;
+        return starSign;
     }
      else console.log("Error with Sign!");
   
