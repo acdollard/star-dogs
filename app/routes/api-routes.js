@@ -128,11 +128,12 @@ module.exports = function(app) {
 
 
   // POST route for signing user up
-  app.post("/api/signup", function(req, res) {
+  app.post("/api/signup", function(req, res, next) {
     db.User.create({
       email: req.body.email,
       password: req.body.password
-    });
+    })
+    next();
   });
       
 

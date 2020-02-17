@@ -11,11 +11,17 @@ $(document).ready(function() {
 
 logOutBtn.on("click", function(event){
     event.preventDefault(); 
-    console.log("Flight of the conchords!");
+
     $.get("/logout", function(req, res){
         // console.log(res);
-        window.location.replace("/landingPage");
+        console.log("Logging out!")
     })
+    // .then(function() {
+    //     window.location.replace("/landingPage")
+    // })
+    // .catch(function(err) {
+    //     console.log(err);
+    //     })
 });
 
 

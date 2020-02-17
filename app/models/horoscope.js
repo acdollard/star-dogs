@@ -1,16 +1,16 @@
-let Sequelize = require('sequelize');
 
-module.exports = function(sequelize, Datatypes) {
+module.exports = function(sequelize, DataTypes){
     let Horoscope = sequelize.define("Horoscope", {
-        sign: {
+        text: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        text: {
+        sign: {
             type: DataTypes.STRING,
-            allowNull: false, 
+            allowNull: false,
         }
+    
     });
 
-    return Horoscope
+    return Horoscope;
 }

@@ -16,24 +16,53 @@ $(document).ready(function() {
         return;
       }
 
-      console.log("We here!")
+      console.log("We here!");
+
+
   
-      // If we have an email and password we run the loginUser function and clear the form
-      loginUser(userData.email, userData.password);
+      //pass the SignUp function the input texts as params and logIn function as callback
+       signUpUser(userData.email, userData.password);
+       logInUser(userData.email, userData.password);
+
+      //clear inputs
       emailInpt.val("");
       passwordInpt.val("");
     });
-  
-    // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
-    function loginUser(email, password) {
+    
+    
+    // sign up function takes in email, password, and callback function
+     function signUpUser(email, password, next) {
       $.post("/api/signup", {
         email: email,
         password: password
       })
-       
-          console.log("HI");
-         window.location.replace("/members");
-          // If there's an error, log the error
-        
-    }});
+      .then(function () {
+        console.log("You're Signed Up");
+        next();
+      })
+      .catch(function(err) {
+        console.log(err);
+      })
+    }
+    
+    
+    // log in function 
+     function logInUser(email, password) {
+      $.post("/api/login", {
+        email: email,
+        password: password
+      })
+      .then(function() {
+        console.log("You're logged in!")
+        window.location.replace("/members");
+      })
+      .catch(function(err) {
+        console.log(err);
+      })
+    }
+
+  
+  
+  
+  });
     

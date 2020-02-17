@@ -7,6 +7,9 @@
 const express = require('express');
 const path = require('path');
 const passport = require("../config/passport")
+const isAuthenticated = require("../config/middleware/isAuthenticated");
+
+
 
 // Routes
 // =============================================================
@@ -18,37 +21,37 @@ module.exports = function(app) {
   // Get route for homepage
   app.get("/" , function(req,res){
 
-    res.sendFile(path.join(__dirname + '/../public' + '/stylesheets' + '/landingPage.html'));
+    res.sendFile(path.join(__dirname + '/../public' +  '/landingPage.html'));
 
   });
 
   // Get route for login page
   app.get("/login" , function(req,res){
 
-    res.sendFile(path.join(__dirname + '/../public' + '/stylesheets' + '/login.html'));
+    res.sendFile(path.join(__dirname + '/../public' +  '/login.html'));
 
   });
 
   // Get route for members and their dogs
-  app.get("/members" , function(req,res){
-
-    res.sendFile(path.join(__dirname + '/../public' + '/stylesheets' + '/members.html'));
-
+  app.get("/members" , isAuthenticated, function(req,res){
+    res.sendFile(path.join(__dirname + '/../public' + '/members.html'));
   });
 
   // Get route for signup page
   app.get("/signup" , function(req,res){
 
-    res.sendFile(path.join(__dirname + '/../public/stylesheets/signup.html'));
+    res.sendFile(path.join(__dirname + '/../public/signup.html'));
 
   });
 
     // Route for logging user out
   app.get("/logout", function(req, res) {
     console.log("HELLO:?");
-      req.logout();
+    req.logout();
+    // res.redirect("/");
       console.log("Lg out plz");
-      // res.sendFile(path.join(__dirname + '/../public/stylesheets/landingPage.html'));
-      // res.redirect("/");
+      res.sendFile(path.join(__dirname + '/../public/landingPage.html'));
+      // res.sendFile(path.join(__dirname + '/../public' + '/stylesheets' + '/landingPage.html'));
+
   });
 }
