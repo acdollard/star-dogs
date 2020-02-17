@@ -9,13 +9,21 @@ const modalBday = $("#modalBday")
 
 $(document).ready(function() {
 
+    
 logOutBtn.on("click", function(event){
     event.preventDefault(); 
-    console.log("Flight of the conchords!");
+
     $.get("/logout", function(req, res){
         // console.log(res);
-        res.redirect("/");
+        console.log("Logging out!")
     })
+    .then(function() {
+        console.log("members.js window.location.replace test")
+        window.location.replace("/");
+    })
+    .catch(function(err) {
+        console.log(err);
+        })
 });
 
 
