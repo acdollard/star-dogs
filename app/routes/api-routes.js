@@ -137,6 +137,17 @@ module.exports = function(app) {
   });
 
 
+  //this is a raw db query since there is no model for horoscopes
+  app.get("/api/horoscopes", function(req, res) {
+    db.query(`SELECT * FROM table_name WHERE sign=${req.sign} ORDER BY RAND() LIMIT 1`,
+    function(err, results) {
+      if(err) throw new Error("problem fetching horoscopes");
+      res.json(results);
+    })
+  })
+
+
+
   // POST route for signing user up
   app.post("/api/signup", function(req, res, next) {
     db.User.create({
