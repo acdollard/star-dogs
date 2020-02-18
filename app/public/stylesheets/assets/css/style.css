@@ -23,8 +23,24 @@ h1 {
 
 }
 
-hr {
+h2 {
 	width: 400px;
 	border: 1px solid #f8f8f8;
 	border-bottom: 1px solid rgba(0,0,0,0.2);
 }
+
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+  }
+  
+  td, th {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+	background-color: #dddddd;
+  }
