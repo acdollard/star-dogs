@@ -140,6 +140,7 @@ module.exports = function(app) {
   // POST route for signing user up
   app.post("/api/signup", function(req, res, next) {
     db.User.create({
+      name: req.body.name,
       email: req.body.email,
       password: req.body.password
     })
@@ -151,8 +152,6 @@ module.exports = function(app) {
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
     res.json(req.user);
   });
-
-
 
   async function sortSign(birthday) {
     dayjs.extend(customParseFormat);
