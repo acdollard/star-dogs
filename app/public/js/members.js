@@ -2,17 +2,62 @@ const newDogBtn = $("#newDogBtn");
 const logOutBtn=$("#logOutBtn");
 const modalAction = $("#modalAction");
 const modalClose = $("#modalClose");
-const modalName = $("#modalName")
-const modalBreed = $("#modalBreed")
-const modalBday = $("#modalBday")
+const modalName = $("#modalName");
+const modalBreed = $("#modalBreed");
+const modalBday = $("#modalBday");
+const tableBody = $("#tableBody");
+const horoscopeRow = $(".horoscopeButton");
+
+
+
+horoscopeRow.on("click", function(event) {
+    event.preventDefault();
+    console.log("yo.")
+    $.get("api/horoscopes", function(req, res) {
+      console.log(res);
+    })
+
+
+})
+
 
 
 $(document).ready(function() {
 
-    
+getDogs();
+
+function getDogs() {
+    $.get("/api/dogs", function(res){
+
+      //code for adding dog rows to table
+        console.log(res);
+      for(let i=0; i<res.length; i++) {
+        let row = $("<tr>");
+        row.attr("class", "m-2");
+        let nameData = $("<td>");
+        let signData = $("<td>");
+        let scopeBtn = $("<button>");
+        scopeBtn.attr("class", "modal-open bg-white border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full");
+        scopeBtn.text("Get Horoscope");
+        nameData.text(res[i].name);
+        signData.text(res[i].sign);
+        row.append(nameData);
+        row.append(signData);
+        row.append(scopeBtn);
+        tableBody.append(row);
+            }
+
+    })
+}
+
+
+
+
+
+
+
 logOutBtn.on("click", function(event){
     event.preventDefault(); 
-
     $.get("/logout", function(req, res){
         // console.log(res);
         console.log("Logging out!")

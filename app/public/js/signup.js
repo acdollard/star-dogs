@@ -1,15 +1,17 @@
 $(document).ready(function() {
     // Getting references to our form and inputs
-    var loginForm = $("#signUpBtn");
-    var emailInpt = $("#emailInpt");
-    var passwordInpt = $("#passInpt");
-  
+    const loginForm = $("#signUpBtn");
+    const emailInpt = $("#emailInpt");
+    const passwordInpt = $("#passInpt");
+    const nameInpt = $("#nameInpt")
     // When the form is submitted, we validate there's an email and password entered
     loginForm.on("click", function(event) {
       event.preventDefault();
       let userData = {
+        name: nameInpt.val().trim(),
         email: emailInpt.val().trim(),
-        password: passwordInpt.val().trim()
+        password: passwordInpt.val().trim(),
+
       };
   
       if (!userData.email || !userData.password) {
@@ -21,8 +23,8 @@ $(document).ready(function() {
 
   
       //pass the SignUp function the input texts as params and logIn function as callback
-       signUpUser(userData.email, userData.password);
-       logInUser(userData.email, userData.password);
+       signUpUser(userData.name, userData.email, userData.password);
+       logInUser(userData.name, userData.email, userData.password);
 
       //clear inputs
       emailInpt.val("");
@@ -31,8 +33,9 @@ $(document).ready(function() {
     
     
     // sign up function takes in email, password, and callback function
-     function signUpUser(email, password, next) {
+     function signUpUser(name, email, password, next) {
       $.post("/api/signup", {
+        name: name,
         email: email,
         password: password
       })

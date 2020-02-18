@@ -1,6 +1,7 @@
 // api-routes.js - this file offers a set of routes for displaying and saving data to the db
 
 
+
 // Dependencies
 // =============================================================
 
@@ -8,22 +9,54 @@
 const db = require("../models");
 const passport = require("../config/passport");
 const dayjs = require('dayjs');
-var customParseFormat = require('dayjs/plugin/customParseFormat');
+const customParseFormat = require('dayjs/plugin/customParseFormat');
+
+
+
+
+
+//connection to sql database outside of sequelize
+const mysql = require("mysql2");
+const connection = mysql.createConnection({
+  host: "localhost",
+  port: 3306,
+  // Your username
+  user: "acdollard",
+  // Your password
+  password: "WalkTheDog!",
+  database: "star_dogs"
+});
+
+connection.connect(function(err) {
+  if (err) throw err;
+});
+
+
 
 
 // Routes
 // =============================================================
 module.exports = function(app) {
 
+// console.log(user.id);
+
   // GET route for getting all of the dogs
-  app.get("/api/dogs/", function(req, res) {
+  app.get("/api/dogs", function(req, res) {
+    console.log(req.user.id);
     db.Dog.findAll({
       where: {
-        owner: req.params.owner
+        UserId: req.user.id
       }
     })
-      .then(function(dbPost) {
-        res.json(dbPost);
+      .then(function(results) {
+        let usersDogs = [];
+
+
+        res.json(results);
+
+
+
+        console.log(results);
       });
   });
 
@@ -66,7 +99,7 @@ module.exports = function(app) {
     } else {
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
-      console.log(res);
+      // console.log(res);
       res.json({
         email: req.user.email,
         id: req.user.id
@@ -76,8 +109,15 @@ module.exports = function(app) {
   });
 
 
-
-
+//this will eventually be the /api/horoscopes route
+  connection.query(`SELECT * FROM Horoscopes WHERE ? ORDER BY RAND() LIMIT 1;`, 
+   {
+      sign:"Capricorn"
+  }, 
+  function(err, results) {
+    if(err) throw new Error("problem fetching horoscopes");
+    console.log(results);
+  })
 
 
 
@@ -127,9 +167,21 @@ module.exports = function(app) {
   });
 
 
+  //this is a raw db query since there is no model for horoscopes
+  app.get("/api/horoscopes", function(req, res) {
+    db.query(`SELECT * FROM table_name WHERE sign=${req.sign} ORDER BY RAND() LIMIT 1`,
+    function(err, results) {
+      if(err) throw new Error("problem fetching horoscopes");
+      res.json(results);
+    })
+  })
+
+
+
   // POST route for signing user up
   app.post("/api/signup", function(req, res, next) {
     db.User.create({
+      name: req.body.name,
       email: req.body.email,
       password: req.body.password
     })
@@ -142,8 +194,6 @@ module.exports = function(app) {
     res.json(req.user);
   });
 
-
-
   async function sortSign(birthday) {
     dayjs.extend(customParseFormat);
     let parseBirthday =  dayjs(birthday, "YYYY-MM-DD");
@@ -154,51 +204,51 @@ module.exports = function(app) {
     if((parseBirthday.$M === 0 && parseBirthday.$D >= 20) || (parseBirthday.$M === 1 && parseBirthday.$D <= 18)){
       starSign = "Aquarius";
       console.log("Starsign: " + starSign);
-      return starSign;
+        return starSign;
     } else if ((parseBirthday.$M === 1 && parseBirthday.$D >= 19) || (parseBirthday.$M === 2 && parseBirthday.$D <= 20)){
       starSign = "Pices";
       console.log("Starsign: " + starSign);
-      return starSign;
+        return starSign;
     } else if ((parseBirthday.$M === 2 && parseBirthday.$D >= 21) || (parseBirthday.$M === 3 && parseBirthday.$D <= 19)){
       starSign = "Aries";
       console.log("Starsign: " + starSign);
-      return starSign;
+        return starSign;
     } else if ((parseBirthday.$M === 3 && parseBirthday.$D >= 19) || (parseBirthday.$M === 4 && parseBirthday.$D <= 20)){
       starSign = "Taurus";
       console.log("Starsign: " + starSign);
-      return starSign;
+        return starSign;
     } else if ((parseBirthday.$M === 4 && parseBirthday.$D >= 19) || (parseBirthday.$M === 5 && parseBirthday.$D <= 20)){
       starSign = "Gemeni";
       console.log("Starsign: " + starSign);
-      return starSign;
+        return starSign;
     } else if ((parseBirthday.$M === 5 && parseBirthday.$D >= 21) || (parseBirthday.$M === 6 && parseBirthday.$D <= 22)){
       starSign = "Cancer";
       console.log("Starsign: " + starSign);
-      return starSign;
+        return starSign;
     } else if ((parseBirthday.$M === 6 && parseBirthday.$D >= 23) || (parseBirthday.$M === 7 && parseBirthday.$D <= 22)){
       starSign = "Leo";
       console.log("Starsign: " + starSign);
-      return starSign;
+        return starSign;
     } else if ((parseBirthday.$M === 7 && parseBirthday.$D >= 23) || (parseBirthday.$M === 8 && parseBirthday.$D <= 22)){
       starSign = "Virgo";
       console.log("Starsign: " + starSign);
-      return starSign;
+        return starSign;
     } else if ((parseBirthday.$M === 8 && parseBirthday.$D >= 23) || (parseBirthday.$M === 9 && parseBirthday.$D <= 22)){
       starSign = "Libra";
       console.log("Starsign: " + starSign);
-      return starSign;
+        return starSign;
     } else if ((parseBirthday.$M === 9 && parseBirthday.$D >= 23) || (parseBirthday.$M === 10 && parseBirthday.$D <= 21)){
       starSign = "Scorpio";
       console.log("Starsign: " + starSign);
-      return starSign;
+        return starSign;
     } else if ((parseBirthday.$M === 10 && parseBirthday.$D >= 22) || (parseBirthday.$M === 11 && parseBirthday.$D <= 21)){
       starSign = "Sagittarius";
       console.log("Starsign: " + starSign);
-      return starSign;
+        return starSign;
     } else if ((parseBirthday.$M === 11 && parseBirthday.$D >= 22) || (parseBirthday.$M === 11 && parseBirthday.$D <= 19)){
       starSign = "Sagittarius";
       console.log("Starsign: " + starSign);
-      return starSign;
+        return starSign;
     }
      else console.log("Error with Sign!");
   
