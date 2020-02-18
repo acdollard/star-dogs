@@ -112,7 +112,7 @@ module.exports = function(app) {
 //this will eventually be the /api/horoscopes route
   connection.query(`SELECT * FROM Horoscopes WHERE ? ORDER BY RAND() LIMIT 1;`, 
    {
-      sign:"Capricorn"
+      sign:"Aries"
   }, 
   function(err, results) {
     if(err) throw new Error("problem fetching horoscopes");
