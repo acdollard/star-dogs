@@ -1,6 +1,7 @@
 // api-routes.js - this file offers a set of routes for displaying and saving data to the db
 
 
+
 // Dependencies
 // =============================================================
 
@@ -8,7 +9,29 @@
 const db = require("../models");
 const passport = require("../config/passport");
 const dayjs = require('dayjs');
-var customParseFormat = require('dayjs/plugin/customParseFormat');
+const customParseFormat = require('dayjs/plugin/customParseFormat');
+
+
+
+
+
+//connection to sql database outside of sequelize
+const mysql = require("mysql2");
+const connection = mysql.createConnection({
+  host: "localhost",
+  port: 3306,
+  // Your username
+  user: "acdollard",
+  // Your password
+  password: "WalkTheDog!",
+  database: "star_dogs"
+});
+
+connection.connect(function(err) {
+  if (err) throw err;
+});
+
+
 
 
 // Routes
@@ -86,8 +109,15 @@ module.exports = function(app) {
   });
 
 
-
-
+//this will eventually be the /api/horoscopes route
+  connection.query(`SELECT * FROM Horoscopes WHERE ? ORDER BY RAND() LIMIT 1;`, 
+   {
+      sign:"Capricorn"
+  }, 
+  function(err, results) {
+    if(err) throw new Error("problem fetching horoscopes");
+    console.log(results);
+  })
 
 
 
