@@ -1,10 +1,10 @@
 USE star_dogs;
 
 CREATE TABLE Horoscopes (
-    id INTEGER NOT NULL AUTO-INCREMENT PRIMARY KEY,
+    id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
     sign VARCHAR (20) NOT NULL,
-    horoscope NOT NULL,
-)
+    horoscope TEXT NOT NULL
+);
 
 INSERT INTO Horoscopes (sign, horoscope)
 VALUES 

@@ -7,22 +7,20 @@ const modalBreed = $("#modalBreed");
 const modalBday = $("#modalBday");
 const tableBody = $("#tableBody");
 const horoscopeRow = $(".horoscopeButton");
+const welcome = $("#welcome_banner");
 
 
 
-horoscopeRow.on("click", function(event) {
-    event.preventDefault();
-    console.log("yo.")
-    $.get("api/horoscopes", function(req, res) {
-      console.log(res);
-    })
 
-
-})
 
 
 
 $(document).ready(function() {
+
+$.get("/api/user_data").then(function(data) {
+    console.log(data.id);
+    welcome.text("Welcome " + data.name + "!");
+        }); 
 
 getDogs();
 
@@ -33,11 +31,12 @@ function getDogs() {
         console.log(res);
       for(let i=0; i<res.length; i++) {
         let row = $("<tr>");
-        row.attr("class", "m-2");
+        row.attr("id", res[i].id);
         let nameData = $("<td>");
         let signData = $("<td>");
         let scopeBtn = $("<button>");
-        scopeBtn.attr("class", "modal-open bg-white border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full");
+        scopeBtn.attr("id", res[i].sign);
+        let buttonId = scopeBtn.id;
         scopeBtn.text("Get Horoscope");
         nameData.text(res[i].name);
         signData.text(res[i].sign);
@@ -51,9 +50,13 @@ function getDogs() {
 }
 
 
-
-
-
+horoscopeRow.on("click", function(event) {
+  event.preventDefault();
+  console.log("yo.")
+  $.get("api/horoscopes", function(req, res) {
+    console.log(res);
+  })
+})
 
 
 logOutBtn.on("click", function(event){
@@ -79,9 +82,7 @@ logOutBtn.on("click", function(event){
 // console.log(data.id)
 //     });
 // }
-$.get("/api/user_data").then(function(data) {
-    console.log(data.id)
-        });
+
 
 
 //click listener for creating a new dog

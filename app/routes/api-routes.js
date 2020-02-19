@@ -50,13 +50,8 @@ module.exports = function(app) {
     })
       .then(function(results) {
         let usersDogs = [];
-
-
         res.json(results);
-
-
-
-        console.log(results);
+        // console.log(results);
       });
   });
 
@@ -101,8 +96,10 @@ module.exports = function(app) {
       // Sending back a password, even a hashed password, isn't a good idea
       // console.log(res);
       res.json({
+        name: req.user.name,
         email: req.user.email,
         id: req.user.id
+
       });
     }
 
@@ -112,7 +109,7 @@ module.exports = function(app) {
 //this will eventually be the /api/horoscopes route
   connection.query(`SELECT * FROM Horoscopes WHERE ? ORDER BY RAND() LIMIT 1;`, 
    {
-      sign:"Capricorn"
+      sign:"Aries"
   }, 
   function(err, results) {
     if(err) throw new Error("problem fetching horoscopes");
