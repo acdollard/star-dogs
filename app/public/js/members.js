@@ -7,22 +7,20 @@ const modalBreed = $("#modalBreed");
 const modalBday = $("#modalBday");
 const tableBody = $("#tableBody");
 const horoscopeRow = $(".horoscopeButton");
+const welcome = $("#welcome_banner");
 
 
 
-horoscopeRow.on("click", function(event) {
-    event.preventDefault();
-    console.log("yo.")
-    $.get("api/horoscopes", function(req, res) {
-      console.log(res);
-    })
 
-
-})
 
 
 
 $(document).ready(function() {
+
+$.get("/api/user_data").then(function(data) {
+    console.log(data.id);
+    welcome.text("Welcome " + data.name + "!");
+        }); 
 
 getDogs();
 
@@ -51,9 +49,13 @@ function getDogs() {
 }
 
 
-
-
-
+horoscopeRow.on("click", function(event) {
+  event.preventDefault();
+  console.log("yo.")
+  $.get("api/horoscopes", function(req, res) {
+    console.log(res);
+  })
+})
 
 
 logOutBtn.on("click", function(event){
@@ -79,9 +81,7 @@ logOutBtn.on("click", function(event){
 // console.log(data.id)
 //     });
 // }
-$.get("/api/user_data").then(function(data) {
-    console.log(data.id)
-        });
+
 
 
 //click listener for creating a new dog

@@ -50,13 +50,8 @@ module.exports = function(app) {
     })
       .then(function(results) {
         let usersDogs = [];
-
-
         res.json(results);
-
-
-
-        console.log(results);
+        // console.log(results);
       });
   });
 
@@ -101,8 +96,10 @@ module.exports = function(app) {
       // Sending back a password, even a hashed password, isn't a good idea
       // console.log(res);
       res.json({
+        name: req.user.name,
         email: req.user.email,
         id: req.user.id
+
       });
     }
 
