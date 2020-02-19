@@ -26,7 +26,7 @@ getDogs();
 
 function getDogs() {
     $.get("/api/dogs", function(res){
-
+      let buttonId = "";
       //code for adding dog rows to table
         console.log(res);
       for(let i=0; i<res.length; i++) {
@@ -44,19 +44,23 @@ function getDogs() {
         row.append(signData);
         row.append(scopeBtn);
         tableBody.append(row);
+
+
+        getHoroscope(res[i].sign);
             }
 
+            
     })
 }
 
 
-horoscopeRow.on("click", function(event) {
-  event.preventDefault();
-  console.log("yo.")
-  $.get("api/horoscopes", function(req, res) {
-    console.log(res);
-  })
-})
+// horoscopeRow.on("click", function(event) {
+//   event.preventDefault();
+//   console.log("yo.")
+//   $.get("api/horoscopes", function(req, res) {
+//     console.log(res);
+//   })
+// })
 
 
 logOutBtn.on("click", function(event){
@@ -73,15 +77,6 @@ logOutBtn.on("click", function(event){
         console.log(err);
         })
 });
-
-
-
-    // This file just does a GET request to figure out which user is logged in
-    // and updates the HTML on the page
-//     async function getID() {$.get("/api/user_data").then(function(data) {
-// console.log(data.id)
-//     });
-// }
 
 
 
@@ -119,18 +114,18 @@ modalAction.on("click", function(event) {
 
 
 
-// function sortSign(birthday) {
-//    let parseBirthday = dayjs.extend(customParseFormat)
-//         dayjs(birthday, "YYYY-MM-DD")
-//          console.log(parseBirthday);
-//         return parseBirthday;
-   
-// };
+function getHoroscope(buttonId){
+  document.getElementById(buttonId).addEventListener("click", function(){
+  event.preventDefault();
+    console.log("yo.")
+    console.log(buttonId)
+    $.get("api/horoscopes/" + buttonId).then(function(res) {
 
+      console.log(res);
 
-
-
-
+     }) 
+    })
+  }
 
 
 

@@ -9,7 +9,7 @@ body {
 
 #welcome_banner {
     font-size: large;
-    text-align: center;
+    text-align: left;
 
 
 }
@@ -17,3 +17,22 @@ body {
 h3{
     font-family: "Lato";
 }
+
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    background: rgba(239, 240, 239, 0.8); 
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    /* background-color: #dddddd; */
+    background: rgba(160, 160, 160, 0.8);
+  }

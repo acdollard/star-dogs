@@ -44,3 +44,7 @@ table {
   tr:nth-child(even) {
 	background-color: #dddddd;
   }
+
+  #paw {
+	  size: 11px;
+  }
