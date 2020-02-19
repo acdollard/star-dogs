@@ -165,12 +165,25 @@ module.exports = function(app) {
 
 
   //this is a raw db query since there is no model for horoscopes
-  app.get("/api/horoscopes", function(req, res) {
-    db.query(`SELECT * FROM table_name WHERE sign=${req.sign} ORDER BY RAND() LIMIT 1`,
-    function(err, results) {
-      if(err) throw new Error("problem fetching horoscopes");
-      res.json(results);
-    })
+  app.get("/api/horoscopes/:sign", function(req, res) {
+    let sign = req.params.sign
+    console.log(sign)
+    connection.query(`SELECT * FROM Horoscopes WHERE ? ORDER BY RAND() LIMIT 1;`, 
+    {
+       sign:sign
+   }, 
+  
+   function(err, results) {
+     if(err) throw new Error("problem fetching horoscopes");
+     console.log(results)
+     let answer = {
+       id: results[0].id,
+       sign: results[0].sign,
+       horoscope: results[0].horoscope
+     }
+     console.log(answer);
+     res.json(answer);;
+   })
   })
 
 
@@ -203,7 +216,7 @@ module.exports = function(app) {
       console.log("Starsign: " + starSign);
         return starSign;
     } else if ((parseBirthday.$M === 1 && parseBirthday.$D >= 19) || (parseBirthday.$M === 2 && parseBirthday.$D <= 20)){
-      starSign = "Pices";
+      starSign = "Pisces";
       console.log("Starsign: " + starSign);
         return starSign;
     } else if ((parseBirthday.$M === 2 && parseBirthday.$D >= 21) || (parseBirthday.$M === 3 && parseBirthday.$D <= 19)){
@@ -243,8 +256,8 @@ module.exports = function(app) {
       console.log("Starsign: " + starSign);
         return starSign;
     } else if ((parseBirthday.$M === 11 && parseBirthday.$D >= 22) || (parseBirthday.$M === 11 && parseBirthday.$D <= 19)){
-      starSign = "Sagittarius";
-      console.log("Starsign: " + starSign);
+      starSign = "Capricorn";
+      console.log("Capricorn: " + starSign);
         return starSign;
     }
      else console.log("Error with Sign!");
