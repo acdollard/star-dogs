@@ -140,13 +140,15 @@ module.exports = function(app) {
 
   // DELETE route for deleting dogs
   app.delete("/api/dogs/:id", function(req, res) {
+
     db.Dog.destroy({
       where: {
         id: req.params.id
       }
     })
-      .then(function(dbPost) {
-        res.json(dbPost);
+      .then(function(dbpost) {
+        console.log("dog deleted")
+        res.json(dbpost)
       });
   });
 
@@ -176,6 +178,9 @@ module.exports = function(app) {
    function(err, results) {
      if(err) throw new Error("problem fetching horoscopes");
      console.log(results)
+     if(!results){
+       return Error("error!")
+     }
      let answer = {
        id: results[0].id,
        sign: results[0].sign,
