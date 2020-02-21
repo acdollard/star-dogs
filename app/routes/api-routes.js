@@ -187,7 +187,7 @@ module.exports = function(app) {
        horoscope: results[0].horoscope
      }
      console.log(answer);
-     res.json(answer);;
+     res.render("index")
    })
   })
 
