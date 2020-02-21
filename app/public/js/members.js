@@ -36,13 +36,16 @@ function getDogs() {
         let signData = $("<td>");
         let scopeBtn = $("<td>");
         let delBtn = $("<td>");
-        scopeBtn.html("<button>Get Horoscope</button>")
-        delBtn.html("<button>Remove Dog</button>")
+        scopeBtn.html("<button>Get Horoscope</button>");
+        delBtn.html("<button>Remove Dog</button>");
+
+        //add id's to buttons that are the same as the sign and dog's id
         scopeBtn.attr("id", res[i].sign);
         delBtn.attr("id", res[i].id);
-        let buttonId = scopeBtn.id;
-        // scopeBtn.text("Get Horoscope");
-        // delBtn.text("Remove Dog");
+
+        //add class to buttons to give them modal functionality
+        // scopeBtn.attr("class", "modal-open2 bg-white border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full")
+
         nameData.text(res[i].name);
         signData.text(res[i].sign);
         row.append(nameData);
@@ -108,15 +111,16 @@ modalAction.on("click", function(event) {
         breed: newDog.breed,
         bDay: newDog.bDay,
         // UserID: data.id
-    }).then(function() {
+    }).then(function(dbPost) {
         console.log("New Dog Created!");
+        console.log(dbPost);
         window.location.replace("/members");
         // If there's an error, log the error
     })
     .catch(function(err) {
         console.log(err);
     });
-})
+  })
 });
 
 
@@ -126,9 +130,9 @@ function getHoroscope(buttonId){
   event.preventDefault();
     console.log("yo.")
     console.log(buttonId)
-    $.get("api/horoscopes/" + buttonId).then(function(res) {
-        console.log(res);
-     }) 
+
+    window.location.href="/get/horoscopes/" + buttonId;
+
     })
   }
 
@@ -154,7 +158,7 @@ function removeDog(buttonId){
 
 
 
-
+//CREATE DOG MODAL 1 script
 var openmodal = document.querySelectorAll('.modal-open')
     for (var i = 0; i < openmodal.length; i++) {
       openmodal[i].addEventListener('click', function(event){
@@ -193,3 +197,10 @@ var openmodal = document.querySelectorAll('.modal-open')
       body.classList.toggle('modal-active')
     }
 
+
+
+
+
+
+
+ 

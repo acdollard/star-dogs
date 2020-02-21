@@ -21,9 +21,9 @@ const connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
   // Your username
-  user: "root",
+  user: "acdollard",
   // Your password
-  password: "Pistons03",
+  password: "WalkTheDog!",
   database: "star_dogs"
 });
 
@@ -167,7 +167,7 @@ module.exports = function(app) {
 
 
   //this is a raw db query since there is no model for horoscopes
-  app.get("/api/horoscopes/:sign", function(req, res) {
+  app.get("/get/horoscopes/:sign", function(req, res) {
     let sign = req.params.sign
     console.log(sign)
     connection.query(`SELECT * FROM Horoscopes WHERE ? ORDER BY RAND() LIMIT 1;`, 
@@ -187,8 +187,8 @@ module.exports = function(app) {
        text: results[0].horoscope
      }
      console.log(horoscope);
-     res.json(horoscope);
-   })
+     res.render("index", {horoscope: {sign: horoscope.sign,text: horoscope.text}});
+   });
   })
 
 
