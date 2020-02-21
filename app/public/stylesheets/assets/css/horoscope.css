@@ -7,11 +7,7 @@ body {
 #welcome_banner {
     font-size: large;
     text-align: left;
-
-
 }
-
-
 
 table {
     font-family: arial, sans-serif;
@@ -41,6 +37,7 @@ table {
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
+    position: relative;
   }
 
   p {
@@ -58,6 +55,13 @@ table {
   .horoscopeSign {
       font-size: x-large;
   }
+
+  #credit {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+
 
   /* #backBtn {
       background-color: white;
