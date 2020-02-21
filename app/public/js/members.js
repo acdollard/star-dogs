@@ -26,27 +26,34 @@ getDogs();
 
 function getDogs() {
     $.get("/api/dogs", function(res){
-      let buttonId = "";
+
       //code for adding dog rows to table
         console.log(res);
       for(let i=0; i<res.length; i++) {
         let row = $("<tr>");
-        row.attr("id", res[i].id);
+        // row.attr("id", res[i].id);
         let nameData = $("<td>");
         let signData = $("<td>");
-        let scopeBtn = $("<button>");
+        let scopeBtn = $("<td>");
+        let delBtn = $("<td>");
+        scopeBtn.html("<button>Get Horoscope</button>")
+        delBtn.html("<button>Remove Dog</button>")
         scopeBtn.attr("id", res[i].sign);
+        delBtn.attr("id", res[i].id);
         let buttonId = scopeBtn.id;
-        scopeBtn.text("Get Horoscope");
+        // scopeBtn.text("Get Horoscope");
+        // delBtn.text("Remove Dog");
         nameData.text(res[i].name);
         signData.text(res[i].sign);
         row.append(nameData);
         row.append(signData);
         row.append(scopeBtn);
+        row.append(delBtn);
         tableBody.append(row);
 
 
         getHoroscope(res[i].sign);
+        removeDog(res[i].id);
             }
 
             
@@ -113,19 +120,37 @@ modalAction.on("click", function(event) {
 });
 
 
-
+// Function for retrieving horoscopes
 function getHoroscope(buttonId){
   document.getElementById(buttonId).addEventListener("click", function(){
   event.preventDefault();
     console.log("yo.")
     console.log(buttonId)
     $.get("api/horoscopes/" + buttonId).then(function(res) {
-
-      console.log(res);
-
+        console.log(res);
      }) 
     })
   }
+
+
+  // Function for deleting dogs
+function removeDog(buttonId){
+  document.getElementById(buttonId).addEventListener("click", function(){
+  event.preventDefault();
+    console.log("yo.");
+    console.log(buttonId);
+
+    $.ajax({
+      method: 'DELETE',
+      url: "/api/dogs/" + buttonId,
+    })
+      .then(function(res) {
+        console.log(res);
+        console.log("Dog removed :(");
+        window.location.replace("/members");
+        })
+  });
+}
 
 
 
