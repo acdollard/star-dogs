@@ -29,14 +29,14 @@ table {
 
 
   .horoscopeDiv {
-    width: 550px;
-    height: 500px;
+    width: 700px;
+    height: 400px;
     margin: 0 auto;
     /* background-color: ivory; */
     background-image: url(../img/image1.gif), url(../img/sora-sagano.jpg);
     background-position: top;
     background-repeat: no-repeat;
-    background-size: cover;
+    /* background-size: cover; */
     position: relative;
   }
 
@@ -62,12 +62,4 @@ table {
         left: 0;
       }
 
-
-  /* #backBtn {
-      background-color: white;
-      color: white;
-  }
-
-  .button {
-      background-color: white;
-  } */
+    
