@@ -132,9 +132,12 @@ function getHoroscope(buttonId){
     console.log(buttonId)
 
     
-    $.get("api/horoscopes/" + buttonId).then(function(res) {
-        console.log(res);
-     }) 
+    // $.get("api/horoscopes/" + buttonId).then(function(res) {
+          // console.log(res);
+    // }) 
+
+    window.location.href="/get/horoscopes/" + buttonId;
+
     })
   }
 

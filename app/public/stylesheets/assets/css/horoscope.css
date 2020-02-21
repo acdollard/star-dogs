@@ -1,8 +1,5 @@
 body {
-	background: url(../img/dogs.png);
-	background-image: no-repeat; 
-    background-position: top;
-    background-repeat: no-repeat;
+
     width: 100%;
     height: 100%;
 }
@@ -14,9 +11,6 @@ body {
 
 }
 
-h3{
-    font-family: "Lato";
-}
 
 
 table {
@@ -46,4 +40,18 @@ table {
     background-image: url(../img/image1.gif);
     background-position: top;
     background-repeat: no-repeat;
+  }
+
+  p {
+      font-family: "Lato";
+      font-size: large;
+  }
+
+  h3 {
+      font-family: "Lato";
+     
+  }
+
+  .horoscopeSign {
+      font-size: x-large;
   }
