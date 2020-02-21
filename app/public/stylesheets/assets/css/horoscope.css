@@ -33,25 +33,37 @@ table {
 
 
   .horoscopeDiv {
-    width: 75%;
+    width: 550px;
     height: 500px;
     margin: 0 auto;
-    background-color: ivory;
-    background-image: url(../img/image1.gif);
+    /* background-color: ivory; */
+    background-image: url(../img/image1.gif), url(../img/sora-sagano.jpg);
     background-position: top;
     background-repeat: no-repeat;
+    background-size: cover;
   }
 
   p {
       font-family: "Lato";
       font-size: large;
+      color: white
   }
 
   h3 {
       font-family: "Lato";
+      color: white;
      
   }
 
   .horoscopeSign {
       font-size: x-large;
   }
+
+  /* #backBtn {
+      background-color: white;
+      color: white;
+  }
+
+  .button {
+      background-color: white;
+  } */

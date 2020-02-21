@@ -120,7 +120,7 @@ modalAction.on("click", function(event) {
     .catch(function(err) {
         console.log(err);
     });
-})
+  })
 });
 
 
@@ -130,11 +130,6 @@ function getHoroscope(buttonId){
   event.preventDefault();
     console.log("yo.")
     console.log(buttonId)
-
-    
-    // $.get("api/horoscopes/" + buttonId).then(function(res) {
-          // console.log(res);
-    // }) 
 
     window.location.href="/get/horoscopes/" + buttonId;
 
