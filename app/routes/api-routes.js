@@ -21,9 +21,9 @@ const connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
   // Your username
-  user: "acdollard",
+  user: "root",
   // Your password
-  password: "WalkTheDog!",
+  password: "Pistons03",
   database: "star_dogs"
 });
 
@@ -181,13 +181,13 @@ module.exports = function(app) {
      if(!results){
        return Error("error!")
      }
-     let answer = {
+     let horoscope = {
        id: results[0].id,
        sign: results[0].sign,
-       horoscope: results[0].horoscope
+       text: results[0].horoscope
      }
-     console.log(answer);
-     res.render("index")
+     console.log(horoscope);
+     res.json(horoscope);
    })
   })
 
