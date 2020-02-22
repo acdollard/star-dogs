@@ -2,6 +2,11 @@ body {
 
     width: 100%;
     height: 100%;
+    background-image: url(../img/sora-sagano.jpg);
+    background-position: top;
+    background-repeat: no-repeat;
+    /* background-size: cover; */
+    position: relative;;
 }
 
 #welcome_banner {
@@ -33,7 +38,7 @@ table {
     height: 400px;
     margin: 0 auto;
     /* background-color: ivory; */
-    background-image: url(../img/image1.gif), url(../img/sora-sagano.jpg);
+    background-image: url(../img/image1.gif);
     background-position: top;
     background-repeat: no-repeat;
     /* background-size: cover; */

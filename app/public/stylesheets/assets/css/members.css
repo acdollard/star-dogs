@@ -1,18 +1,26 @@
 body {
-	background: url(../img/dogs.png);
-	background-image: no-repeat; 
-    background-position: top;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100%;
+  height: 100%;
+  width: 100%;
 }
 
 #welcome_banner {
     font-size: large;
     text-align: left;
-
-
 }
+
+
+.container {
+  background: url(../img/dog4.png) center bottom no-repeat, url(../img/sora-sagano.jpg) no-repeat;
+	background-image: no-repeat; 
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 700px;
+    background-size: cover;
+    /* position: absolute; */
+      /* bottom: 0; */
+}
+
 
 h3{
     font-family: "Lato";
