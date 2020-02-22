@@ -19,7 +19,7 @@ $(document).ready(function() {
 
 $.get("/api/user_data").then(function(data) {
     console.log(data.id);
-    welcome.text("Welcome " + data.name + "!");
+    welcome.text("Welcome, " + data.name + "!");
         }); 
 
 getDogs();
@@ -45,6 +45,9 @@ function getDogs() {
 
         //add class to buttons to give them modal functionality
         // scopeBtn.attr("class", "modal-open2 bg-white border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full")
+        scopeBtn.addClass("bg-transparent-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center");
+        delBtn.addClass("bg-transparent-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded text-center");
+
 
         nameData.text(res[i].name);
         signData.text(res[i].sign);
@@ -62,15 +65,6 @@ function getDogs() {
             
     })
 }
-
-
-// horoscopeRow.on("click", function(event) {
-//   event.preventDefault();
-//   console.log("yo.")
-//   $.get("api/horoscopes", function(req, res) {
-//     console.log(res);
-//   })
-// })
 
 
 logOutBtn.on("click", function(event){
