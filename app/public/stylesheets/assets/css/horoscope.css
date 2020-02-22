@@ -48,12 +48,12 @@ table {
   p {
       font-family: "Lato";
       font-size: large;
-      color: white
+      color: rgb(71, 71, 71);
   }
 
   h3 {
       font-family: "Lato";
-      color: white;
+      color: rgb(71, 71, 71);
      
   }
 
@@ -61,10 +61,8 @@ table {
       font-size: x-large;
   }
 
-  #credit {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-      }
+  .box {
+    background: rgba(239, 240, 239, 0.8); 
+  }
 
     
