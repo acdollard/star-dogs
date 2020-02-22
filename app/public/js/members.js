@@ -26,27 +26,37 @@ getDogs();
 
 function getDogs() {
     $.get("/api/dogs", function(res){
-      let buttonId = "";
+
       //code for adding dog rows to table
         console.log(res);
       for(let i=0; i<res.length; i++) {
         let row = $("<tr>");
-        row.attr("id", res[i].id);
+        // row.attr("id", res[i].id);
         let nameData = $("<td>");
         let signData = $("<td>");
-        let scopeBtn = $("<button>");
+        let scopeBtn = $("<td>");
+        let delBtn = $("<td>");
+        scopeBtn.html("<button>Get Horoscope</button>");
+        delBtn.html("<button>Remove Dog</button>");
+
+        //add id's to buttons that are the same as the sign and dog's id
         scopeBtn.attr("id", res[i].sign);
-        let buttonId = scopeBtn.id;
-        scopeBtn.text("Get Horoscope");
+        delBtn.attr("id", res[i].id);
+
+        //add class to buttons to give them modal functionality
+        // scopeBtn.attr("class", "modal-open2 bg-white border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full")
+
         nameData.text(res[i].name);
         signData.text(res[i].sign);
         row.append(nameData);
         row.append(signData);
         row.append(scopeBtn);
+        row.append(delBtn);
         tableBody.append(row);
 
 
         getHoroscope(res[i].sign);
+        removeDog(res[i].id);
             }
 
             
@@ -101,35 +111,54 @@ modalAction.on("click", function(event) {
         breed: newDog.breed,
         bDay: newDog.bDay,
         // UserID: data.id
-    }).then(function() {
+    }).then(function(dbPost) {
         console.log("New Dog Created!");
+        console.log(dbPost);
         window.location.replace("/members");
         // If there's an error, log the error
     })
     .catch(function(err) {
         console.log(err);
     });
-})
+  })
 });
 
 
-
+// Function for retrieving horoscopes
 function getHoroscope(buttonId){
   document.getElementById(buttonId).addEventListener("click", function(){
   event.preventDefault();
     console.log("yo.")
     console.log(buttonId)
-    $.get("api/horoscopes/" + buttonId).then(function(res) {
 
-      console.log(res);
+    window.location.href="/get/horoscopes/" + buttonId;
 
-     }) 
     })
   }
 
 
+  // Function for deleting dogs
+function removeDog(buttonId){
+  document.getElementById(buttonId).addEventListener("click", function(){
+  event.preventDefault();
+    console.log("yo.");
+    console.log(buttonId);
+
+    $.ajax({
+      method: 'DELETE',
+      url: "/api/dogs/" + buttonId,
+    })
+      .then(function(res) {
+        console.log(res);
+        console.log("Dog removed :(");
+        window.location.replace("/members");
+        })
+  });
+}
 
 
+
+//CREATE DOG MODAL 1 script
 var openmodal = document.querySelectorAll('.modal-open')
     for (var i = 0; i < openmodal.length; i++) {
       openmodal[i].addEventListener('click', function(event){
@@ -168,3 +197,10 @@ var openmodal = document.querySelectorAll('.modal-open')
       body.classList.toggle('modal-active')
     }
 
+
+
+
+
+
+
+ 

@@ -140,13 +140,15 @@ module.exports = function(app) {
 
   // DELETE route for deleting dogs
   app.delete("/api/dogs/:id", function(req, res) {
+
     db.Dog.destroy({
       where: {
         id: req.params.id
       }
     })
-      .then(function(dbPost) {
-        res.json(dbPost);
+      .then(function(dbpost) {
+        console.log("dog deleted")
+        res.json(dbpost)
       });
   });
 
@@ -165,7 +167,7 @@ module.exports = function(app) {
 
 
   //this is a raw db query since there is no model for horoscopes
-  app.get("/api/horoscopes/:sign", function(req, res) {
+  app.get("/get/horoscopes/:sign", function(req, res) {
     let sign = req.params.sign
     console.log(sign)
     connection.query(`SELECT * FROM Horoscopes WHERE ? ORDER BY RAND() LIMIT 1;`, 
@@ -176,14 +178,17 @@ module.exports = function(app) {
    function(err, results) {
      if(err) throw new Error("problem fetching horoscopes");
      console.log(results)
-     let answer = {
+     if(!results){
+       return Error("error!")
+     }
+     let horoscope = {
        id: results[0].id,
        sign: results[0].sign,
-       horoscope: results[0].horoscope
+       text: results[0].horoscope
      }
-     console.log(answer);
-     res.json(answer);;
-   })
+     console.log(horoscope);
+     res.render("index", {horoscope: {sign: horoscope.sign,text: horoscope.text}});
+   });
   })
 
 

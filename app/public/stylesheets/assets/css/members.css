@@ -36,3 +36,14 @@ table {
     /* background-color: #dddddd; */
     background: rgba(160, 160, 160, 0.8);
   }
+
+
+  .horoscopeDiv {
+    width: 75%;
+    height: 500px;
+    margin: 0 auto;
+    background-color: ivory;
+    background-image: url(../img/image1.gif);
+    background-position: top;
+    background-repeat: no-repeat;
+  }
