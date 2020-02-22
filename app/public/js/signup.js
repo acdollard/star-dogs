@@ -64,6 +64,27 @@ $(document).ready(function() {
       })
     }
 
+    function dogLogin(){
+      var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://api.TheDogAPI.com/v1/images/search?q=air",
+        "method": "GET",
+        "headers": {
+          "x-api-key": "88a10272-d2d1-4931-841b-7ac799becfd8"
+        }
+      }
+      $.ajax(settings).then(function (response) {
+        console.log(response[0].url);
+        $('#myimage').attr('src',response[0].url);
+        $('#myimage').attr("width","400");
+        $('#myimage').attr("height","400");
+      });
+    };
+    $(document).ready(function(){
+      dogLogin();
+      });
+
   
   
   

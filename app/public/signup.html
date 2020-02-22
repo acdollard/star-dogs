@@ -3,16 +3,45 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="stylesheets/assets/css/signup.css" rel="stylesheet">
     <link href="https://unpkg.com/tailwindcss@0.3.0/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
 
-<body class="h-screen overflow-hidden flex items-center justify-center" style="background: #edf2f7;">
-    <div class="bg-grey-lighter min-h-screen flex flex-col">
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/"><i class="fa fa-dog"></i></a>
+            <a class="navbar-brand" href="/">Star Dogs</a>
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="/">Home</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/signup">Signup <i class="fa fa-user-plus"></i></a></li>
+              <li><a href="/Login">Login  <i class="fa fa-user"></i></a></li>
+            </ul>
+          </div>
+        </div>
+       </nav>
+
+
+<div class="container">
+    <div class="bg-transparent flex flex-col myimage">
             <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-                <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+                <div class="px-6 py-8 rounded shadow-md text-black w-full" >
                     <h1 class="mb-8 text-3xl text-center">Sign up</h1>
                     <input 
                         type="text"
@@ -20,7 +49,7 @@
                         name="name"
                         placeholder="Name"
                         id="nameInpt"/>
-                        
+
                     <input 
                         type="text"
                         class="block border border-grey-light w-full p-3 rounded mb-4"
@@ -45,18 +74,9 @@
                         class="w-full text-center py-3 rounded bg-green text-white hover:bg-green-dark focus:outline-none my-1"
                         id="signUpBtn">Create Account</button>
 
-                    <div class="text-center text-sm text-grey-dark mt-4">
-                        By signing up, you agree to the 
-                        <a class="no-underline border-b border-grey-dark text-grey-dark" href="#">
-                            Terms of Service
-                        </a> and 
-                        <a class="no-underline border-b border-grey-dark text-grey-dark" href="#">
-                            Privacy Policy
-                        </a>
-                    </div>
                 </div>
 
-                <div class="text-grey-dark mt-6">
+                <div class="text-white mt-6">
                     Already have an account? 
                     <a class="no-underline border-b border-blue text-blue" href="login.html">
                         Log in
@@ -64,7 +84,12 @@
                 </div>
             </div>
         </div>
+        <br>
+        <div style="text-align: center;">
 
+            <img id="myimage" class="justify-center">
+        </div>
+    </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="../js/signup.js" type="text/javascript"></script>
 </body>

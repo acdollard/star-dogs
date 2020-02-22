@@ -1,8 +1,9 @@
 body {
-	background: url(../img/dog.png);
-	background-image: no-repeat; 
+	background: url(../img/dog.png), url(../img/sora-sagano.jpg);
+	background-image: no-repeat, no-repeat; 
     background-position: center;
-    background-repeat: no-repeat;
+	background-repeat: no-repeat, no-repeat;
+	background-size: contain, cover;
     width: 100%;
 	height: 100%;
 	font-family: "Lato";
@@ -12,6 +13,7 @@ body {
 h1 {
 	font-weight: 700;
 	font-size: 5em;
+	color: white;
 }
 
 .content {
@@ -23,28 +25,17 @@ h1 {
 
 }
 
-h2 {
-	width: 400px;
-	border: 1px solid #f8f8f8;
-	border-bottom: 1px solid rgba(0,0,0,0.2);
+h3 {
+
+	color: whitesmoke;
 }
 
-table {
-	font-family: arial, sans-serif;
-	border-collapse: collapse;
-	width: 100%;
-  }
-  
-  td, th {
-	border: 1px solid #dddddd;
-	text-align: left;
-	padding: 8px;
-  }
-  
-  tr:nth-child(even) {
-	background-color: #dddddd;
-  }
+#paw {
+	color: goldenrod;
+}
 
-  #paw {
-	  size: 11px;
-  }
+#star {
+	color: rgb(167, 3, 167);
+}
+
+
