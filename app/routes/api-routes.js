@@ -17,20 +17,18 @@ const mysql = require("mysql2");
 
 
 //connection to sql database outside of sequelize
-if (process.env.JAWSDB_URL){
-    connection = mysql.createConnection(process.env.JAWSDB_URL)
-} else {
+
    connection = mysql.createConnection({
-    host: "localhost",
+    host: "a07yd3a6okcidwap.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     port: 3306,
     // YOUR MySQL USERNAME
-    user: "acdollard",
+    user: "yrao40dbgrcf0en3",
     // YOUR MySQL PASSWORD
-    password: "WalkTheDog!",
-    database: "star_dogs"
+    password: "h86lyq6kdp1emezk",
+    database: "n0uj4zddwnjp686f"
   });
 
-}
+
 
 
 connection.connect(function(err) {
