@@ -13,6 +13,7 @@
     "foundation-sites": "^6.6.1",
     "fs": "0.0.1-security",
     "moment": "^2.24.0",
+    "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",

@@ -10,23 +10,28 @@ const db = require("../models");
 const passport = require("../config/passport");
 const dayjs = require('dayjs');
 const customParseFormat = require('dayjs/plugin/customParseFormat');
+const mysql = require("mysql2");
 
 
 
 
 
 //connection to sql database outside of sequelize
-const mysql = require("mysql2");
-const connection = mysql.createConnection({
-  host: "localhost",
-  port: 3306,
+if (process.env.JAWSDB_URL){
+    connection = mysql.createConnection(process.env.JAWSDB_URL)
+} else {
+   connection = mysql.createConnection({
+    host: "localhost",
+    port: 3306,
+    // YOUR MySQL USERNAME
+    user: "acdollard",
+    // YOUR MySQL PASSWORD
+    password: "WalkTheDog!",
+    database: "star_dogs"
+  });
 
-  // YOUR MySQL USERNAME
-  user: "acdollard",
-  // YOUR MySQL PASSWORD
-  password: "WalkTheDog!",
-  database: "star_dogs"
-});
+}
+
 
 connection.connect(function(err) {
   if (err) throw err;

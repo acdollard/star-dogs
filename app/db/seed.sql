@@ -1,8 +1,12 @@
+CREATE DATABASE IF NOT EXISTS star_dogs;
 USE star_dogs;
+
+DROP TABLE IF EXISTS Horoscopes;
 
 CREATE TABLE Horoscopes (
     id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
     sign VARCHAR (20) NOT NULL,
+    createdAt TIMESTAMP NOT NULL,
     horoscope TEXT NOT NULL
 );
 
@@ -29,6 +33,6 @@ VALUES
 ("Scorpio", "Today your tail will make an appearance. Go after it! You may finally catch that elusive bastard."),
 ("Scorpio", "Today when you’re in the backyard, it will be a good time to put the finishing touches on that hole you’ve been digging. It’s almost perfect!"),
 ("Sagittarius", "Today you will encounter a trained service dog on a walk. Take note of their posture, dignity, and focus."),
-("Sagittarius", "Whatever it is your searching for in the trash can, it’s at the bottom. The very bottom."),
+("Sagittarius", "Whatever it is you're searching for in the trash can, it’s at the bottom. The very bottom."),
 ("Capricorn", "This evening Master will leave a large pizza unattended on the counter. Your window of time will be brief, so strike fast!"),
 ("Capricorn", "Today you will encounter the cute collie-mix from down the road on a walk. They've moved on, and so should you.")
