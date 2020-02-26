@@ -16,10 +16,10 @@
     "operatorsAliases": 0
   },
   "production": {
-    "username": "acdollard",
-    "password": "WalkTheDog!",
-    "database": "star_dogs",
-    "host": "127.0.0.1",
+    "username": "yrao40dbgrcf0en3",
+    "password": "h86lyq6kdp1emezk",
+    "database": "n0uj4zddwnjp686f",
+    "host": "a07yd3a6okcidwap.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql",
     "operatorsAliases": 0
   }
