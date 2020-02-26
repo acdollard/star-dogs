@@ -24,7 +24,7 @@ $(document).ready(function() {
   
       //pass the SignUp function the input texts as params and logIn function as callback
        signUpUser(userData.name, userData.email, userData.password);
-       logInUser(userData.name, userData.email, userData.password);
+       logInUser(userData.email, userData.password);
 
       //clear inputs
       emailInpt.val("");
@@ -33,7 +33,7 @@ $(document).ready(function() {
     
     
     // sign up function takes in email, password, and callback function
-     function signUpUser(name, email, password, next) {
+     function signUpUser(name, email, password) {
       $.post("/api/signup", {
         name: name,
         email: email,
