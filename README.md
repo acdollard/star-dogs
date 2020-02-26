@@ -13,7 +13,6 @@ This app uses CSS frameworks Tailwind and Bootstrap for styling, and the templat
 ### Back-End
 This app uses a Node and Express server and various HTTP requests to manage a MySQL database called star_dogs. Sequelize ORM is used to create models and run queries for the user and the dogs.
 
-<img width="819" alt="Screen Shot 2020-02-22 at 2 53 15 AM" src="https://user-images.githubusercontent.com/55324845/75301598-d9783700-5800-11ea-92df-bfbc45613276.png">
 
 ## Installation
 
