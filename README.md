@@ -16,7 +16,11 @@ This app uses a Node and Express server and various HTTP requests to manage a My
 <img width="819" alt="Screen Shot 2020-02-22 at 2 53 15 AM" src="https://user-images.githubusercontent.com/55324845/75301598-d9783700-5800-11ea-92df-bfbc45613276.png">
 
 ## Installation
-To run this app, follow these instructions: 
+
+To view the app hosted on Heroku: https://sleepy-retreat-96731.herokuapp.com/
+
+
+To run this app locally, follow these instructions: 
     1. Clone or fork the repository https://github.com/acdollard/star-dogs on to your local machine
 
     2. Open a MySQL workbench window and run the content of schema.sql and seed.sql, respectively. (Both found in the app/db file)
