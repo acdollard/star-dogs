@@ -1,6 +1,14 @@
+CREATE DATABASE IF NOT EXISTS star_dogs;
 USE star_dogs;
 
+DROP TABLE IF EXISTS Horoscopes;
 
+CREATE TABLE Horoscopes (
+    id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    sign VARCHAR (20) NOT NULL,
+    createdAt TIMESTAMP NOT NULL,
+    horoscope TEXT NOT NULL
+);
 
 INSERT INTO Horoscopes (sign, horoscope)
 VALUES 

@@ -18,7 +18,7 @@ const mysql = require("mysql2");
 
 //connection to sql database outside of sequelize
 if (process.env.JAWSDB_URL){
-    connection = mysql.createConnection(process.end.JAWSDB_URL)
+    connection = mysql.createConnection(process.env.JAWSDB_URL)
 } else {
    connection = mysql.createConnection({
     host: "localhost",
