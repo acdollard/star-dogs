@@ -6,7 +6,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "dayjs": "^1.8.20",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-handlebars": "^3.1.0",
     "express-session": "^1.17.0",
     "express-sessions": "^1.0.6",
